@@ -29,7 +29,7 @@
 	</Target>
 
 	<Target Name="PackageGame" DependsOnTargets="Compile">
-		<Exec Command='xnapack "@(Executable)" /output:"@(RedistDirectory)XNA Test [$(Configuration)].ccgame"'/>
+		<Exec Command='xnapack "%(Executable.FullPath)" /output:"@(RedistDirectory)XNA Test [$(Configuration)].ccgame"'/>
 	</Target>
 </Project>
 
