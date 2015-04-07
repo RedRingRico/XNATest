@@ -19,7 +19,7 @@
 		</MSBuild>
 	</Target>
 
-	<Target Name="Init" DependsOnTargets="Clean">
+	<Target Name="Init">
 		<MakeDir Directories="@(BinaryDirectory)"/>
 		<MakeDir Directories="@(RedistDirectory)"/>
 	</Target>
@@ -29,6 +29,10 @@
 	</Target>
 
 	<Target Name="PackageGame" DependsOnTargets="Compile">
+		<Exec Command='xnapack "%(Executable.FullPath)" /output:"@(RedistDirectory)XNA Test [$(Configuration)].ccgame"'/>
+	</Target>
+
+	<Target Name="PackageGameClean" DependsOnTargets="Clean;Compile">
 		<Exec Command='xnapack "%(Executable.FullPath)" /output:"@(RedistDirectory)XNA Test [$(Configuration)].ccgame"'/>
 	</Target>
 </Project>
